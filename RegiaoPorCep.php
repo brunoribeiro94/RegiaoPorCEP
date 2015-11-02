@@ -1,27 +1,16 @@
 <?php
 
-class Regiao {
-
-    /**
-     * Método Mágico
-     * 
-     * @access public
-     * @param int $CEP CEP sem mascara
-     * @return array
-     */
-
-    public function __construct($CEP) {
-        return $this->detectaRegiao($CEP);
-    }
+abstract class Regiao {
 
     /**
      * Verifica os 5 primeiros numeros do CEP e busca informações baseada 
      * em cada estado atribuida ao mesmo.
      * 
+     * @static
      * @param int $CEP CEP sem mascara
      * @return array
      */
-    private function detectaRegiao($CEP) {
+    public static function detectaRegiao($CEP) {
         $prefix = substr($CEP, 0, 5);
         switch (true) {
             // SP
